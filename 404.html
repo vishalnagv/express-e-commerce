@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Awesome site</title>
+    <script>
+      window.ssp_config = {
+        selector: "ordway_ssp",
+        frameWidth: "900px",
+        frameHeight: "800px",
+        product_id:
+          "eyJhbGciOiJub25lIn0.eyJ1c2VyX2lkIjoxMzUyLCJjb21wYW55X2lkIjoxMjk2LCJleHAiOjE3MjMyNDU4MjV9.",
+        user_email: "",
+        iframe_src: "https://selfservice-portal-staging.ordwaylabs.com/",
+        input_data: {},
+      };
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="text/javascript">
+      // Redirect all 404 requests to index.html
+      (function () {
+        var redirectTo = "/";
+        var l = window.location;
+        var pathname = l.pathname.replace(/(^\/|\/$)/g, "");
+        if (pathname) {
+          redirectTo += pathname;
+        }
+        if (l.search) {
+          redirectTo += l.search;
+        }
+        if (l.hash) {
+          redirectTo += l.hash;
+        }
+        l.replace(redirectTo);
+      })();
+    </script>
+  </body>
+</html>
