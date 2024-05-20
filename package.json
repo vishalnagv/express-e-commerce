@@ -2,6 +2,7 @@
   "name": "vnv-website",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vishalnagv.github.io/express-e-commerce",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -11,7 +12,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "circular-json": "^0.5.9",
-    "gh-pages": "^6.1.1",
     "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -19,7 +19,6 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://vishalnagv.github.io/express-e-commerce",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -45,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
