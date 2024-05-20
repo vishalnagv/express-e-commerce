@@ -14,7 +14,7 @@ const Home = () => {
   
   const handleOpen = (modal) => {
     setOpenModal(modal);
-    if(!modal) window.open('/checkout')
+    if(!modal) window.open('/express-e-commerce/checkout')
   };
 
   const handleChange = (v) => {
