@@ -11,6 +11,7 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="%PUBLIC_URL%/static/css/main.css" />
     <title>Awesome site</title>
     <script>
       window.ssp_config = {
@@ -28,23 +29,29 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script src="%PUBLIC_URL%/static/js/bundle.js"></script>
     <div id="root"></div>
     <script type="text/javascript">
       // Redirect all 404 requests to index.html
-      (function () {
-        var redirectTo = "/";
-        var l = window.location;
-        var pathname = l.pathname.replace(/(^\/|\/$)/g, "");
-        if (pathname) {
-          redirectTo += pathname;
-        }
-        if (l.search) {
-          redirectTo += l.search;
-        }
-        if (l.hash) {
-          redirectTo += l.hash;
-        }
-        l.replace(redirectTo);
+      // (function () {
+      //   var redirectTo = "/";
+      //   var l = window.location;
+      //   var pathname = l.pathname.replace(/(^\/|\/$)/g, "");
+      //   if (pathname) {
+      //     redirectTo += pathname;
+      //   }
+      //   if (l.search) {
+      //     redirectTo += l.search;
+      //   }
+      //   if (l.hash) {
+      //     redirectTo += l.hash;
+      //   }
+      //   l.replace(redirectTo);
+      // })();
+      (function() {
+        var pathname = window.location.pathname;
+        var redirectPath = pathname.replace('/express-e-commerce', '');
+        window.location.href = redirectPath;
       })();
     </script>
   </body>
