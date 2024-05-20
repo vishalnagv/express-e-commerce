@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/express-e-commerce/checkout" element={<Checkout />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </div>

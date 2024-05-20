@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, CircularProgress, Dialog, Grid } from "@mui/material";
 import { cloneDeep } from "lodash";
 import { LocalMall, LocalMallOutlined } from "@mui/icons-material";
-import { useNavigate } from 'react-router-dom'
+import Checkout from "./Checkout";
 
 const Home = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -11,10 +11,10 @@ const Home = () => {
   const [config, setConfig] = useState(window.ssp_config || {});
   const [value, setValue] = useState(JSON.stringify(config.input_data) || "{}");
   const [invalidJson, setInvalidJson] = useState(false);
-  
+
   const handleOpen = (modal) => {
     setOpenModal(modal);
-    if(!modal) window.open('/express-e-commerce/checkout')
+    setOpenPage(!modal);
   };
 
   const handleChange = (v) => {
@@ -25,10 +25,10 @@ const Home = () => {
       setValue(v);
       setConfig(data);
       setInvalidJson(false);
-      localStorage.setItem("config", data)
+      localStorage.setItem("config", data);
     } catch (error) {
       setValue(v);
-      localStorage.setItem("config", {})
+      localStorage.setItem("config", {});
       setInvalidJson(true);
     }
   };
@@ -44,10 +44,12 @@ const Home = () => {
   return (
     <>
       <h1>E-Commerce Express</h1>
-      <div style={{ margin: "30px", textAlign: "left" }}>
-        <div><b>Enter your input here:</b></div>
+      {!openPage && <div style={{ margin: "30px", textAlign: "left" }}>
+        <div>
+          <b>Enter your input here:</b>
+        </div>
         <br />
-        <Grid container xs={12} >
+        <Grid container xs={12}>
           <Grid item xs={4}>
             <textarea
               id="jsonInput"
@@ -100,7 +102,8 @@ const Home = () => {
             height={config.frameHeight}
           />
         </Dialog>
-      </div>
+      </div>}
+      {openPage && <Checkout setOpenPage={(e) => setOpenPage(e)} />}
     </>
   );
 };

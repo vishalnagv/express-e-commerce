@@ -1,7 +1,8 @@
+import { ArrowBack } from "@mui/icons-material";
 import { Button, CircularProgress } from "@mui/material";
 import React, { useState } from "react";
 
-const Checkout = () => {
+const Checkout = (props) => {
   const config = localStorage.getItem("config") || window.ssp_config || {};
   const [loader, setLoader] = useState(false);
   const onLoad = () => {
@@ -15,6 +16,14 @@ const Checkout = () => {
   return (
     <div style={{ margin: "30px", textAlign: "left" }}>
       {loader && <CircularProgress />}
+      <Button
+        variant="contained"
+        startIcon={<ArrowBack />}
+        onClick={() => props.setOpenPage(false)}
+      >
+        Back
+      </Button>
+      <br/>
       <iframe
         id="tokenframe"
         name="tokenframe"
