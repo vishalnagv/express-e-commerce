@@ -53,6 +53,15 @@
       //   var redirectPath = pathname.replace('/express-e-commerce', '');
       //   window.location.href = redirectPath;
       // })();
+      (function () {
+        var currentPath = window.location.pathname;
+        var redirectPath = "/express-e-commerce" + currentPath;
+        if (!currentPath.includes("/express-e-commerce")) {
+          window.location.replace("/express-e-commerce");
+        } else {
+          window.location.replace(redirectPath);
+        }
+      })();
     </script>
   </body>
 </html>
