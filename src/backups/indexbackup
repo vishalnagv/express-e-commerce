@@ -12,6 +12,11 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Awesome site</title>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
     <script>
       window.ssp_config = {
         selector: "ordway_ssp",
@@ -23,11 +28,22 @@
         iframe_src: "https://selfservice-portal-staging.ordwaylabs.com/",
         input_data: {},
       };
+
+      var loader = () => {
+        var script = document.createElement("script");
+        script.src =
+          "https://selfservice-portal-staging.ordwaylabs.com/assets/embed.js";
+        script.async = true;
+        document.body.appendChild(script);
+        script.onload = function () {
+          console.log("Script loaded successfully.");
+        };
+        script.onerror = function () {
+          console.error("Failed to load the script.");
+        };
+      };
+
+      window.addEventListener("loadIframe", () => loader());
     </script>
-    <script src="https://js.stripe.com/v3/"></script>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
   </body>
 </html>
