@@ -3,7 +3,7 @@ import { Button, CircularProgress } from "@mui/material";
 import React, { useState } from "react";
 
 const Checkout = (props) => {
-  const config = localStorage.getItem("config") || window.ssp_config || {};
+  const config = props.config || window.ssp_config || {};
   const [loader, setLoader] = useState(false);
   const onLoad = () => {
     setLoader(false);

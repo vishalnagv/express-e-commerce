@@ -103,7 +103,7 @@ const Home = () => {
           />
         </Dialog>
       </div>}
-      {openPage && <Checkout setOpenPage={(e) => setOpenPage(e)} />}
+      {openPage && <Checkout setOpenPage={(e) => setOpenPage(e)} config={config}/>}
     </>
   );
 };
