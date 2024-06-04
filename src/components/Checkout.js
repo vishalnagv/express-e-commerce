@@ -20,6 +20,7 @@ const Checkout = (props) => {
         variant="contained"
         startIcon={<ArrowBack />}
         onClick={() => props.setOpenPage(false)}
+        style={{backgroundColor: 'rgb(29, 29, 29)'}}
       >
         Back
       </Button>

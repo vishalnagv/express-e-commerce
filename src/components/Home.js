@@ -42,69 +42,77 @@ const Home = () => {
   };
 
   return (
-    <>
-      <h1>E-Commerce Express</h1>
-      {!openPage && <div style={{ margin: "30px", textAlign: "left" }}>
-        <div>
-          <b>Enter your input here:</b>
+    <div style={{ marginTop: "100px" }}>
+      {!openPage && (
+        <div style={{ margin: "30px", textAlign: "left" }}>
+          <div>
+            <b>Enter your input here:</b>
+          </div>
+          <br />
+          <Grid container xs={12}>
+            <Grid item xs={4}>
+              <textarea
+                id="jsonInput"
+                rows="10"
+                cols="50"
+                onChange={(e) => handleChange(e.target.value)}
+                value={value}
+              ></textarea>
+              <br />
+              {invalidJson && (
+                <span style={{ color: "red", fontSize: "12px" }}>
+                  <i>Input format is not a valid JSON</i>
+                </span>
+              )}
+            </Grid>
+            <Grid item xs={6}>
+              <Button
+                variant="contained"
+                onClick={() => handleOpen(true)}
+                disabled={invalidJson}
+                startIcon={<LocalMall />}
+                style={{ backgroundColor: "rgb(29, 29, 29)" }}
+              >
+                Buy via Modal
+              </Button>
+              <br />
+              <Button
+                variant="outlined"
+                onClick={() => handleOpen(false)}
+                disabled={invalidJson}
+                startIcon={<LocalMallOutlined />}
+                style={{
+                  marginTop: "20px",
+                  borderColor: "rgb(29, 29, 29)",
+                  color: "rgb(29, 29, 29)",
+                }}
+              >
+                Buy via Embed
+              </Button>
+            </Grid>
+          </Grid>
+          <Dialog
+            onClose={() => setOpenModal(false)}
+            open={openModal}
+            fullWidth
+            maxWidth="md"
+          >
+            {loader && <CircularProgress />}
+            <iframe
+              id="tokenframe"
+              name="tokenframe"
+              src={config.iframe_src}
+              onLoad={onLoad}
+              width={config.frameWidth}
+              height={config.frameHeight}
+            />
+          </Dialog>
         </div>
-        <br />
-        <Grid container xs={12}>
-          <Grid item xs={4}>
-            <textarea
-              id="jsonInput"
-              rows="10"
-              cols="50"
-              onChange={(e) => handleChange(e.target.value)}
-              value={value}
-            ></textarea>
-            <br />
-            {invalidJson && (
-              <span style={{ color: "red", fontSize: "12px" }}>
-                <i>Input format is not a valid JSON</i>
-              </span>
-            )}
-          </Grid>
-          <Grid item xs={6}>
-            <Button
-              variant="contained"
-              onClick={() => handleOpen(true)}
-              disabled={invalidJson}
-              startIcon={<LocalMall />}
-            >
-              Buy via Modal
-            </Button>
-            <br />
-            <Button
-              variant="outlined"
-              onClick={() => handleOpen(false)}
-              style={{ marginTop: "20px" }}
-              disabled={invalidJson}
-              startIcon={<LocalMallOutlined />}
-            >
-              Buy via Embed
-            </Button>
-          </Grid>
-        </Grid>
-        <Dialog
-          onClose={() => setOpenModal(false)}
-          open={openModal}
-          fullWidth
-          maxWidth="md"
-        >
-          {loader && <CircularProgress />}
-          <iframe
-            id="tokenframe"
-            name="tokenframe"
-            src={config.iframe_src}
-            onLoad={onLoad}
-            width={config.frameWidth}
-            height={config.frameHeight}
-          />
-        </Dialog>
-      </div>}
-      {openPage && <Checkout setOpenPage={(e) => setOpenPage(e)} config={config}/>}
-    </>
+      )}
+      {openPage && (
+        <Checkout setOpenPage={(e) => setOpenPage(e)} config={config} />
+      )}
+    </div>
   );
 };
 
